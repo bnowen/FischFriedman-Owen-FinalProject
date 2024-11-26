@@ -20,7 +20,7 @@ library(dplyr)
 
 ```{r}
 
-searches <- gtrends(c("abortion", "birth control"),
+searches <- gtrends(c("abortion", "birth control", "IUD", "tubes tied", "hysterectomy"),
                geo = "US",
                time = "2024-10-23 2024-11-20",
                low_search_volume = TRUE)
