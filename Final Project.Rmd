@@ -1,0 +1,18 @@
+---
+title: "Final Project"
+author: "Brittany O-W and Molly F-F"
+date: "2024-11-26"
+output: html_document
+---
+
+Link to GitHub repository: https://github.com/bnowen/FischFriedman-Owen-FinalProject
+
+
+```{r}
+library(tidyverse)
+library(gtrendsR)
+library(censusapi)
+library(dplyr)
+```
+
+
