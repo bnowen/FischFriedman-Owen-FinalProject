@@ -10,7 +10,7 @@ Link to GitHub repository: https://github.com/bnowen/FischFriedman-Owen-FinalPro
 #Proposal
 For our final project, we will explore how Google search volume related to abortion, birth control, and reproductive healthcare changed before and after the 2024 presidential election, in the US overall and by metropolitan area. We will use the gtrendsR package to extract search history data for abortion and other related terms through the Google Trends API. Our unit of analysis will be search result density and any changes across our tracked time periods. We will track search results by metro area (N=210), though we may expand to state (N=51) for an additional, larger-scale perspective, as several states had abortion measures on the ballot for this election. We will explore a variety of search terms, including but not limited to the following: “abortion”; “reproductive healthcare”; “birth control”; “IUD”; “tubes tied”, “plan B”, “sterilization”, “birth control implant”, “tubal ligation”, “hysterectomy”, “vasectomy”, “family planning”. We will conduct our analysis on the term(s) with the largest relative search volume. We expect to integrate roughly 20 integer variables, though this may change as we adapt our search terms to trends of interest. We will also focus on any notable differences between dates and what current events they may correspond to; e.g., there was a notable increase in searches for “hysterectomy surgery recovery” at 10 a.m. on November 6. Our analysis will be relatively simple and founded in extensive use of visualizations. Our initial, exploratory analysis will be conducted using plots from base R and the ggplot2 package. For our final analysis and deliverable, we will create one or more interactive bubble plot visualizations utilizing Shiny. Each interactive bubble plot will allow users to compare density for a given search term (size of the bubble, linked to y-axis), while allowing them to view how these vary by top metropolitan areas (color of bubble) over time (x-axis). Users will be able to hover over each bubble for more information on the exact search rating and date. 
 
-#Data
+#Data Pull
 
 ```{r}
 library(tidyverse)
@@ -69,10 +69,13 @@ saveRDS(searches3_region, "searches3_region.rds")
 saveRDS(searches3_metro, "searches3_metro.rds")
 ```
 
-###FROM ASSIGNMENT 2 - UPDATE FOR PROJECT
+#Reshape Data
 
+```{r}
 
-#Plot
+```
+
+#Interactive Plot
 
 ```{r}
 library(ggplot2)
@@ -81,4 +84,15 @@ library(tidyr)
 library(plotly)
 library(extrafont)
 library(htmlwidgets)
+```
+
+```{r}
+#ggsave("interactive_plot.png")
+```
+
+```{r}
+#widget <- ggplotly(interactive, tooltip="text")
+#widget
+
+#saveWidget(widget, file=paste0("C:/Users/britt/OneDrive/Documents/Coursework/SURV 727/final project plot.html"))
 ```
