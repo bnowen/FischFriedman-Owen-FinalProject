@@ -44,6 +44,14 @@ searches2 <- gtrends(c("vasectomy", "family planning", "plan B", "birth control 
                time = "2024-10-23 2024-11-20",
                low_search_volume = TRUE)
 plot(searches2)
+
+searches2_time <- as_tibble(searches2$interest_over_time)
+searches2_region <- as_tibble(searches2$interest_by_region)
+searches2_metro <- as_tibble(searches2$interest_by_dma)
+
+saveRDS(searches2_time, "searches2_time.rds")
+saveRDS(searches2_region, "searches2_region.rds")
+saveRDS(searches2_metro, "searches2_metro.rds")
 ```
 ```{r}
 searches3 <- gtrends(c("tubal litigation", "bisalp", "abortion clinic", "abortion center"),
@@ -51,6 +59,14 @@ searches3 <- gtrends(c("tubal litigation", "bisalp", "abortion clinic", "abortio
                time = "2024-10-23 2024-11-20",
                low_search_volume = TRUE)
 plot(searches3)
+
+searches3_time <- as_tibble(searches3$interest_over_time)
+searches3_region <- as_tibble(searches3$interest_by_region)
+searches3_metro <- as_tibble(searches3$interest_by_dma)
+
+saveRDS(searches3_time, "searches3_time.rds")
+saveRDS(searches3_region, "searches3_region.rds")
+saveRDS(searches3_metro, "searches3_metro.rds")
 ```
 
 ###FROM ASSIGNMENT 2 - UPDATE FOR PROJECT
