@@ -90,10 +90,7 @@ Abortion and Plan B were the most common search terms in their respective groups
 searches1_metro_w <- spread(searches1_metro, key = keyword, value = hits)
 searches1_region_w <- spread(searches1_region, key = keyword, value = hits)
 searches1_time_w <- spread(searches1_time, key = keyword, value = hits)
-```
 
-
-``` {r}
 searches2_metro_w <- spread(searches2_metro, key = keyword, value = hits)
 searches2_region_w <- spread(searches2_region, key = keyword, value = hits)
 searches2_time_w <- spread(searches2_time, key = keyword, value = hits)
