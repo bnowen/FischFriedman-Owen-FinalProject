@@ -69,12 +69,39 @@ saveRDS(searches3_region, "searches3_region.rds")
 saveRDS(searches3_metro, "searches3_metro.rds")
 ```
 
+# Looking at most common terms
+
+``` {r}
+searches1_time$hits <- as.numeric(searches1_time$hits)
+ggplot(searches1_time, aes(x=date, y=hits, group=keyword)) + geom_line(aes(color=keyword))
+
+searches2_time$hits <- as.numeric(searches2_time$hits)
+ggplot(searches2_time, aes(x=date, y=hits, group=keyword)) + geom_line(aes(color=keyword))
+
+searches3_time$hits <- as.numeric(searches3_time$hits)
+ggplot(searches3_time, aes(x=date, y=hits, group=keyword)) + geom_line(aes(color=keyword))
+```
+
+Abortion and Plan B were the most common search terms in their respective groups, each peaking on November 6, the day after the election. Abortion clinic was the most common search term in its group, but it peaked before the election.
+
 #Reshape Data
 
 ```{r}
-
+searches1_metro_w <- spread(searches1_metro, key = keyword, value = hits)
+searches1_region_w <- spread(searches1_region, key = keyword, value = hits)
+searches1_time_w <- spread(searches1_time, key = keyword, value = hits)
 ```
 
+
+``` {r}
+searches2_metro_w <- spread(searches2_metro, key = keyword, value = hits)
+searches2_region_w <- spread(searches2_region, key = keyword, value = hits)
+searches2_time_w <- spread(searches2_time, key = keyword, value = hits)
+
+searches3_metro_w <- spread(searches3_metro, key = keyword, value = hits)
+searches3_region_w <- spread(searches3_region, key = keyword, value = hits)
+searches3_time_w <- spread(searches3_time, key = keyword, value = hits)
+```
 #Interactive Plot
 
 ```{r}
