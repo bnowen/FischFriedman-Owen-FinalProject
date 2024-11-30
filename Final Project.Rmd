@@ -100,7 +100,7 @@ searches3_region_w <- spread(searches3_region, key = keyword, value = hits)
 searches3_time_w <- spread(searches3_time, key = keyword, value = hits)
 ```
 
-#Create final datasets
+#Create final datasets for overall seaches
 
 ```{r}
 
@@ -122,6 +122,19 @@ final_region <- left_join(final_region, searches3_region_w[,c("location", "bisal
 final_time <- searches1_time_w
 final_time <- left_join(final_time, searches2_time_w[,c("date", "birth control implant","family planning", "vasectomy")], by="date")
 final_time <- left_join(final_time, searches3_time_w[,c("date", "bisalp", "tubal litigation")], by="date")
+
+```
+```{r}
+saveRDS(final_metro, "final_metro.rds")
+saveRDS(final_region, "final_region.rds")
+saveRDS(final_time, "final_time.rds")
+```
+
+```{r}
+oct23 <- gtrends(c("abortion", "bisalp", "plan B", "tubes tied", "hysterectomy"),
+               geo = "US",
+               time = "2024-10-23 2024-11-20",
+               low_search_volume = TRUE)
 
 ```
 
