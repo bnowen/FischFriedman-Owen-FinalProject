@@ -130,12 +130,206 @@ saveRDS(final_region, "final_region.rds")
 saveRDS(final_time, "final_time.rds")
 ```
 
+#Time Series - This takes a while to run, be cautious 
 ```{r}
-oct23 <- gtrends(c("abortion", "bisalp", "plan B", "tubes tied", "hysterectomy"),
+oct23 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
                geo = "US",
-               time = "2024-10-23 2024-11-20",
+               time = "2024-10-23 2024-10-24",
                low_search_volume = TRUE)
+#oct24 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+              # geo = "US",
+               #time = "2024-10-24 2024-10-25",
+               #low_search_volume = TRUE)
+oct25 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+               geo = "US",
+               time = "2024-10-25 2024-10-26",
+               low_search_volume = TRUE)
+#oct26 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+              # geo = "US",
+               #time = "2024-10-26 2024-10-27",
+               #low_search_volume = TRUE)
+oct27 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+               geo = "US",
+               time = "2024-10-27 2024-10-28",
+               low_search_volume = TRUE)
+#oct28 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+            #  geo = "US",
+             #  time = "2024-10-28 2024-10-29",
+              # low_search_volume = TRUE)
+oct29 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+              geo = "US",
+               time = "2024-10-29 2024-10-30",
+               low_search_volume = TRUE)
+#oct30 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+ #             geo = "US",
+  #             time = "2024-10-30 2024-10-31",
+   #            low_search_volume = TRUE)
+oct31 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+              geo = "US",
+               time = "2024-10-31 2024-11-01",
+               low_search_volume = TRUE)
+#nov1 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+ #             geo = "US",
+  #             time = "2024-11-01",
+   #            low_search_volume = TRUE)
+nov2 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+              geo = "US",
+               time = "2024-11-02 2024-11-03",
+               low_search_volume = TRUE)
+#nov3 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+ #             geo = "US",
+  #             time = "2024-11-03",
+   #            low_search_volume = TRUE)
+nov4 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+              geo = "US",
+               time = "2024-11-04 2024-11-05",
+               low_search_volume = TRUE)
+#nov5 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+ #             geo = "US",
+  #             time = "2024-11-05",
+   #            low_search_volume = TRUE)
+nov6 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+              geo = "US",
+               time = "2024-11-06 2024-11-07",
+               low_search_volume = TRUE)
+#nov7 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+ #             geo = "US",
+  #             time = "2024-11-07",
+   #            low_search_volume = TRUE)
+nov8 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+              geo = "US",
+               time = "2024-11-08 2024-11-09",
+               low_search_volume = TRUE)
+#nov9 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+ #             geo = "US",
+  #             time = "2024-11-09",
+   #            low_search_volume = TRUE)
+nov10 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+              geo = "US",
+               time = "2024-11-10 2024-11-11",
+               low_search_volume = TRUE)
+#nov11 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+ #             geo = "US",
+  #             time = "2024-11-11",
+   #            low_search_volume = TRUE)
+nov12 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+              geo = "US",
+               time = "2024-11-12 2024-11-13",
+               low_search_volume = TRUE)
+#nov13 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+ #             geo = "US",
+  #             time = "2024-11-13",
+   #            low_search_volume = TRUE)
+nov14 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+              geo = "US",
+               time = "2024-11-14 2024-11-15",
+               low_search_volume = TRUE)
+#nov15 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+ #             geo = "US",
+  #             time = "2024-11-15",
+   #            low_search_volume = TRUE)
+nov16 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+              geo = "US",
+               time = "2024-11-16 2024-11-17",
+               low_search_volume = TRUE)
+#nov17 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+ #             geo = "US",
+  #             time = "2024-11-17",
+   #            low_search_volume = TRUE)
+nov18 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+              geo = "US",
+               time = "2024-11-18 2024-11-19",
+               low_search_volume = TRUE)
+#nov19 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+ #             geo = "US",
+  #             time = "2024-11-19",
+   #            low_search_volume = TRUE)
+#nov20 <- gtrends(c("abortion", "bisalp", "plan B", "abortion clinic", "vasectomy"),
+ #             geo = "US",
+  #             time = "2024-11-20",
+   #            low_search_volume = TRUE)
 
+
+
+```
+
+```{r}
+
+oct23_metro <- as_tibble(oct23$interest_by_dma)
+oct25_metro <- as_tibble(oct25$interest_by_dma)
+oct27_metro <- as_tibble(oct27$interest_by_dma)
+oct29_metro <- as_tibble(oct29$interest_by_dma)
+oct31_metro <- as_tibble(oct31$interest_by_dma)
+nov2_metro <- as_tibble(nov2$interest_by_dma)
+nov4_metro <- as_tibble(nov4$interest_by_dma)
+nov6_metro <- as_tibble(nov6$interest_by_dma)
+nov8_metro <- as_tibble(nov8$interest_by_dma)
+nov10_metro <- as_tibble(nov10$interest_by_dma)
+nov12_metro <- as_tibble(nov12$interest_by_dma)
+nov14_metro <- as_tibble(nov14$interest_by_dma)
+nov16_metro <- as_tibble(nov16$interest_by_dma)
+nov18_metro <- as_tibble(nov18$interest_by_dma)
+
+oct23_region <- as_tibble(oct23$interest_by_dma)
+oct25_region <- as_tibble(oct25$interest_by_dma)
+oct27_region <- as_tibble(oct27$interest_by_dma)
+oct29_region <- as_tibble(oct29$interest_by_dma)
+oct31_region <- as_tibble(oct31$interest_by_dma)
+nov2_region <- as_tibble(nov2$interest_by_dma)
+nov4_region <- as_tibble(nov4$interest_by_dma)
+nov6_region <- as_tibble(nov6$interest_by_dma)
+nov8_region <- as_tibble(nov8$interest_by_dma)
+nov10_region <- as_tibble(nov10$interest_by_dma)
+nov12_region <- as_tibble(nov12$interest_by_dma)
+nov14_region <- as_tibble(nov14$interest_by_dma)
+nov16_region <- as_tibble(nov16$interest_by_dma)
+nov18_region <- as_tibble(nov18$interest_by_dma)
+
+
+```
+
+```{r}
+oct23_region$date = "2024-10-23 2024-10-24"
+oct25_region$date = "2024-10-25 2024-10-26"
+oct27_region$date = "2024-10-27 2024-10-28"
+oct29_region$date = "2024-10-29 2024-10-30"
+oct31_region$date = "2024-10-31 2024-11-01"
+nov2_region$date = "2024-11-02 2024-11-03"
+nov4_region$date = "2024-11-04 2024-11-05"
+nov6_region$date = "2024-11-06 2024-11-07"
+nov8_region$date = "2024-11-08 2024-11-09"
+nov10_region$date = "2024-11-10 2024-11-11"
+nov12_region$date = "2024-11-12 2024-11-13"
+nov14_region$date = "2024-11-14 2024-11-15"
+nov16_region$date = "2024-11-16 2024-11-17"
+nov18_region$date = "2024-11-18 2024-11-19"
+```
+
+```{r}
+byregion <- rbind(oct23_region, oct25_region, oct27_region, oct29_region, oct31_region, nov2_region, nov4_region, nov6_region, nov8_region, nov10_region, nov12_region, nov14_region, nov16_region, nov18_region)
+saveRDS(byregion, "byregion.rds")
+```
+
+```{r}
+oct23_region$date = "2024-10-23 2024-10-24"
+oct25_region$date = "2024-10-25 2024-10-26"
+oct27_region$date = "2024-10-27 2024-10-28"
+oct29_region$date = "2024-10-29 2024-10-30"
+oct31_region$date = "2024-10-31 2024-11-01"
+nov2_region$date = "2024-11-02 2024-11-03"
+nov4_region$date = "2024-11-04 2024-11-05"
+nov6_region$date = "2024-11-06 2024-11-07"
+nov8_region$date = "2024-11-08 2024-11-09"
+nov10_region$date = "2024-11-10 2024-11-11"
+nov12_region$date = "2024-11-12 2024-11-13"
+nov14_region$date = "2024-11-14 2024-11-15"
+nov16_region$date = "2024-11-16 2024-11-17"
+nov18_region$date = "2024-11-18 2024-11-19"
+```
+
+```{r}
+bymetro <- rbind(oct23_metro, oct25_metro, oct27_metro, oct29_metro, oct31_metro, nov2_metro, nov4_metro, nov6_metro, nov8_metro, nov10_metro, nov12_metro, nov14_metro, nov16_metro, nov18_metro)
+saveRDS(bymetro, "bymetro.rds")
 ```
 
 #Interactive Plot
