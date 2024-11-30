@@ -109,6 +109,19 @@ final_metro <- searches1_metro_w
 library(dplyr)
 final_metro <- left_join(final_metro, searches2_metro_w[,c("location", "birth control implant","family planning", "vasectomy")], by="location")
 final_metro <- left_join(final_metro, searches3_metro_w[,c("location", "abortion center","abortion clinic", "bisalp", "tubal litigation")], by="location")
+```
+```{r}
+#region area dataset
+final_region <- searches1_region_w
+final_region <- left_join(final_region, searches2_region_w[,c("location", "birth control implant","family planning", "vasectomy")], by="location")
+final_region <- left_join(final_region, searches3_region_w[,c("location", "bisalp", "tubal litigation")], by="location")
+
+```
+```{r}
+#time area dataset
+final_time <- searches1_time_w
+final_time <- left_join(final_time, searches2_time_w[,c("date", "birth control implant","family planning", "vasectomy")], by="date")
+final_time <- left_join(final_time, searches3_time_w[,c("date", "bisalp", "tubal litigation")], by="date")
 
 ```
 
