@@ -343,6 +343,19 @@ library(extrafont)
 library(htmlwidgets)
 ```
 
+```{R}
+
+byregion %>%
+  filter(year == 2007) %>%
+  ggvis(x = ~gdpPercap,
+        y = ~lifeExp,
+        fill = ~continent,
+        size := ~pop/250000,
+        opacity := 0.5) %>%
+  layer_points(stroke := "white")
+
+```
+
 ```{r}
 #ggsave("interactive_plot.png")
 ```
