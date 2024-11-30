@@ -99,6 +99,19 @@ searches3_metro_w <- spread(searches3_metro, key = keyword, value = hits)
 searches3_region_w <- spread(searches3_region, key = keyword, value = hits)
 searches3_time_w <- spread(searches3_time, key = keyword, value = hits)
 ```
+
+#Create final datasets
+
+```{r}
+
+#Metro area dataset
+final_metro <- searches1_metro_w
+library(dplyr)
+final_metro <- left_join(final_metro, searches2_metro_w[,c("location", "birth control implant","family planning", "vasectomy")], by="location")
+final_metro <- left_join(final_metro, searches3_metro_w[,c("location", "abortion center","abortion clinic", "bisalp", "tubal litigation")], by="location")
+
+```
+
 #Interactive Plot
 
 ```{r}
