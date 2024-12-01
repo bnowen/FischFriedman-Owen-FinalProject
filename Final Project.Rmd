@@ -350,7 +350,6 @@ library(htmlwidgets)
 ```
 https://r-graph-gallery.com/320-the-basis-of-bubble-plot.html
 https://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html
-https://plotly.com/r/animations/
 
 #Option 1 - Diverging Dot Plot in Ggplot?
 ```{R}
@@ -370,44 +369,44 @@ ggplot(byregion, aes(x=location, y=hits, label=hits)) +
   coord_flip()
 ```
 
-#Option 2 - PLotly? Seems like our best shot. But it seems to have a problem with bisalp?
+#FOR MOLLY
+#Option 2 - PLotly? Seems like our best shot. \
+
+- But it seems to have a problem with "bisalp". From what I've read online, this seems to be because "bisalp" isn't present on all search dates (earlier before the election). --> FIXED: set na to -1
+- Can also rename dates to make them cleaner if preferred. 
+https://plotly.com/r/animations/
 
 ```{r}
+byregion[is.na(byregion)] <- -1
+
 library(plotly)
-fig <- plot_ly(byregion, x = ~hits, y = ~location, size = ~hits, color = ~keyword, frame= ~date, type = 'scatter', mode = "markers")
-fig
+fig <- plot_ly(byregion, x = ~hits, y = ~location, size = ~hits, color = ~keyword, frame= ~date, type = 'scatter', mode = "markers", fill = ~'')
+
 fig <- fig %>% layout(
-    title = "Search Results by Keyword",
+    title = "Search Results by Top 5 Keywords",
     xaxis = list(title = "Hits"),
     yaxis = list(title = "State"),
+  legend=list(title=list(text='Keyword')),
     margin = list(l = 100)
   )
+
 fig <- fig %>%
-  animation_opts(
-    1000, easing = "cubic-in", redraw = FALSE
+  animation_opts( #higher value makes animation slower
+    5000, easing = "cubic-in", redraw = FALSE 
   )
 fig
 ```
-```{R}
 
-byregion %>%
-  filter(keyword=="abortion")
-  ggvis(x = ~hits,
-        y = ~hits,
-        fill = ~region,
-        #size := ~pop/250000,
-        opacity = 0.5) %>%
-  layer_points(stroke := "white")
 
+#Save plot as .png
+```{r}
+fig <- ggsave("interactive_plot.png")
 ```
 
+#Save as html gif
 ```{r}
-#ggsave("interactive_plot.png")
-```
+widget <- ggplotly(fig, tooltip="text")
+widget
 
-```{r}
-#widget <- ggplotly(interactive, tooltip="text")
-#widget
-
-#saveWidget(widget, file=paste0("C:/Users/britt/OneDrive/Documents/Coursework/SURV 727/final project plot.html"))
+saveWidget(widget, file=paste0("C:/Users/britt/OneDrive/Documents/Coursework/SURV 727/final project plot.html"))
 ```
