@@ -332,6 +332,12 @@ bymetro <- rbind(oct23_metro, oct25_metro, oct27_metro, oct29_metro, oct31_metro
 saveRDS(bymetro, "bymetro.rds")
 ```
 
+```{r}
+write.csv(byregion, "byregion.csv", row.names=FALSE)
+
+```
+
+
 #Interactive Plot
 
 ```{r}
@@ -344,25 +350,59 @@ library(htmlwidgets)
 ```
 https://r-graph-gallery.com/320-the-basis-of-bubble-plot.html
 https://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html
+https://plotly.com/r/animations/
 
-#Diverging Dot Plot
+#Option 1 - Diverging Dot Plot in Ggplot?
 ```{R}
 library(ggplot2)
 theme_set(theme_bw())
 
 # Plot
-ggplot(byregion, aes(x=region, y=hits, label=hits)) + 
-  geom_point(stat='identity', aes(col=keyword), size=6)  +
+ggplot(byregion, aes(x=location, y=hits, label=hits)) + 
+  geom_point(stat='identity', aes(col=keyword), size=2)  +
   #scale_color_manual(name="Mileage", 
    #                  labels = c("Above Average", "Below Average"), 
     #                 values = c("above"="#00ba38", "below"="#f8766d")) + 
   geom_text(color="white", size=2) +
   labs(title="Diverging Dot Plot", 
-       subtitle="Normalized mileage from 'mtcars': Dotplot") + 
+       subtitle="Keyword Searches by State") + 
   ylim(-2.5, 2.5) +
   coord_flip()
 ```
 
+#Option 2 - PLotly?
+
+```{r}
+library(plotly)
+fig <- plot_ly(byregion, x = ~hits, y = ~location, name = "Keyword", type = 'scatter'
+            # ,mode = "markers"
+             )
+fig
+
+
+fig <- df %>%
+  plot_ly(
+    x = ~gdpPercap, 
+    y = ~lifeExp, 
+    size = ~pop, 
+    color = ~continent, 
+    frame = ~year, 
+    text = ~country, 
+    hoverinfo = "text",
+    type = 'scatter',
+    mode = 'markers'
+  )
+
+
+
+fig <- fig %>% layout(
+    title = "Gender earnings disparity",
+    xaxis = list(title = "Annual Salary (in thousands)"),
+    margin = list(l = 100)
+  )
+
+fig
+```
 ```{R}
 
 byregion %>%
