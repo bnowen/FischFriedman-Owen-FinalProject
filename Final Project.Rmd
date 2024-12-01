@@ -270,20 +270,20 @@ nov14_metro <- as_tibble(nov14$interest_by_dma)
 nov16_metro <- as_tibble(nov16$interest_by_dma)
 nov18_metro <- as_tibble(nov18$interest_by_dma)
 
-oct23_region <- as_tibble(oct23$interest_by_dma)
-oct25_region <- as_tibble(oct25$interest_by_dma)
-oct27_region <- as_tibble(oct27$interest_by_dma)
-oct29_region <- as_tibble(oct29$interest_by_dma)
-oct31_region <- as_tibble(oct31$interest_by_dma)
-nov2_region <- as_tibble(nov2$interest_by_dma)
-nov4_region <- as_tibble(nov4$interest_by_dma)
-nov6_region <- as_tibble(nov6$interest_by_dma)
-nov8_region <- as_tibble(nov8$interest_by_dma)
-nov10_region <- as_tibble(nov10$interest_by_dma)
-nov12_region <- as_tibble(nov12$interest_by_dma)
-nov14_region <- as_tibble(nov14$interest_by_dma)
-nov16_region <- as_tibble(nov16$interest_by_dma)
-nov18_region <- as_tibble(nov18$interest_by_dma)
+oct23_region <- as_tibble(oct23$interest_by_region)
+oct25_region <- as_tibble(oct25$interest_by_region)
+oct27_region <- as_tibble(oct27$interest_by_region)
+oct29_region <- as_tibble(oct29$interest_by_region)
+oct31_region <- as_tibble(oct31$interest_by_region)
+nov2_region <- as_tibble(nov2$interest_by_region)
+nov4_region <- as_tibble(nov4$interest_by_region)
+nov6_region <- as_tibble(nov6$interest_by_region)
+nov8_region <- as_tibble(nov8$interest_by_region)
+nov10_region <- as_tibble(nov10$interest_by_region)
+nov12_region <- as_tibble(nov12$interest_by_region)
+nov14_region <- as_tibble(nov14$interest_by_region)
+nov16_region <- as_tibble(nov16$interest_by_region)
+nov18_region <- as_tibble(nov18$interest_by_region)
 
 
 ```
@@ -311,20 +311,20 @@ saveRDS(byregion, "byregion.rds")
 ```
 
 ```{r}
-oct23_region$date = "2024-10-23 2024-10-24"
-oct25_region$date = "2024-10-25 2024-10-26"
-oct27_region$date = "2024-10-27 2024-10-28"
-oct29_region$date = "2024-10-29 2024-10-30"
-oct31_region$date = "2024-10-31 2024-11-01"
-nov2_region$date = "2024-11-02 2024-11-03"
-nov4_region$date = "2024-11-04 2024-11-05"
-nov6_region$date = "2024-11-06 2024-11-07"
-nov8_region$date = "2024-11-08 2024-11-09"
-nov10_region$date = "2024-11-10 2024-11-11"
-nov12_region$date = "2024-11-12 2024-11-13"
-nov14_region$date = "2024-11-14 2024-11-15"
-nov16_region$date = "2024-11-16 2024-11-17"
-nov18_region$date = "2024-11-18 2024-11-19"
+oct23_metro$date = "2024-10-23 2024-10-24"
+oct25_metro$date = "2024-10-25 2024-10-26"
+oct27_metro$date = "2024-10-27 2024-10-28"
+oct29_metro$date = "2024-10-29 2024-10-30"
+oct31_metro$date = "2024-10-31 2024-11-01"
+nov2_metro$date = "2024-11-02 2024-11-03"
+nov4_metro$date = "2024-11-04 2024-11-05"
+nov6_metro$date = "2024-11-06 2024-11-07"
+nov8_metro$date = "2024-11-08 2024-11-09"
+nov10_metro$date = "2024-11-10 2024-11-11"
+nov12_metro$date = "2024-11-12 2024-11-13"
+nov14_metro$date = "2024-11-14 2024-11-15"
+nov16_metro$date = "2024-11-16 2024-11-17"
+nov18_metro$date = "2024-11-18 2024-11-19"
 ```
 
 ```{r}
@@ -342,16 +342,36 @@ library(plotly)
 library(extrafont)
 library(htmlwidgets)
 ```
+https://r-graph-gallery.com/320-the-basis-of-bubble-plot.html
+https://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html
+
+#Diverging Dot Plot
+```{R}
+library(ggplot2)
+theme_set(theme_bw())
+
+# Plot
+ggplot(byregion, aes(x=region, y=hits, label=hits)) + 
+  geom_point(stat='identity', aes(col=keyword), size=6)  +
+  #scale_color_manual(name="Mileage", 
+   #                  labels = c("Above Average", "Below Average"), 
+    #                 values = c("above"="#00ba38", "below"="#f8766d")) + 
+  geom_text(color="white", size=2) +
+  labs(title="Diverging Dot Plot", 
+       subtitle="Normalized mileage from 'mtcars': Dotplot") + 
+  ylim(-2.5, 2.5) +
+  coord_flip()
+```
 
 ```{R}
 
 byregion %>%
-  filter(year == 2007) %>%
-  ggvis(x = ~gdpPercap,
-        y = ~lifeExp,
-        fill = ~continent,
-        size := ~pop/250000,
-        opacity := 0.5) %>%
+  filter(keyword=="abortion")
+  ggvis(x = ~hits,
+        y = ~hits,
+        fill = ~region,
+        #size := ~pop/250000,
+        opacity = 0.5) %>%
   layer_points(stroke := "white")
 
 ```
