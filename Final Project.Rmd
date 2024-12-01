@@ -370,37 +370,22 @@ ggplot(byregion, aes(x=location, y=hits, label=hits)) +
   coord_flip()
 ```
 
-#Option 2 - PLotly?
+#Option 2 - PLotly? Seems like our best shot. But it seems to have a problem with bisalp?
 
 ```{r}
 library(plotly)
-fig <- plot_ly(byregion, x = ~hits, y = ~location, name = "Keyword", type = 'scatter'
-            # ,mode = "markers"
-             )
+fig <- plot_ly(byregion, x = ~hits, y = ~location, size = ~hits, color = ~keyword, frame= ~date, type = 'scatter', mode = "markers")
 fig
-
-
-fig <- df %>%
-  plot_ly(
-    x = ~gdpPercap, 
-    y = ~lifeExp, 
-    size = ~pop, 
-    color = ~continent, 
-    frame = ~year, 
-    text = ~country, 
-    hoverinfo = "text",
-    type = 'scatter',
-    mode = 'markers'
-  )
-
-
-
 fig <- fig %>% layout(
-    title = "Gender earnings disparity",
-    xaxis = list(title = "Annual Salary (in thousands)"),
+    title = "Search Results by Keyword",
+    xaxis = list(title = "Hits"),
+    yaxis = list(title = "State"),
     margin = list(l = 100)
   )
-
+fig <- fig %>%
+  animation_opts(
+    1000, easing = "cubic-in", redraw = FALSE
+  )
 fig
 ```
 ```{R}
