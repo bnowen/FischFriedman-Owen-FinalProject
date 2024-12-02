@@ -348,29 +348,9 @@ library(plotly)
 library(extrafont)
 library(htmlwidgets)
 ```
-https://r-graph-gallery.com/320-the-basis-of-bubble-plot.html
-https://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html
-
-#Option 1 - Diverging Dot Plot in Ggplot?
-```{R}
-library(ggplot2)
-theme_set(theme_bw())
-
-# Plot
-ggplot(byregion, aes(x=location, y=hits, label=hits)) + 
-  geom_point(stat='identity', aes(col=keyword), size=2)  +
-  #scale_color_manual(name="Mileage", 
-   #                  labels = c("Above Average", "Below Average"), 
-    #                 values = c("above"="#00ba38", "below"="#f8766d")) + 
-  geom_text(color="white", size=2) +
-  labs(title="Diverging Dot Plot", 
-       subtitle="Keyword Searches by State") + 
-  ylim(-2.5, 2.5) +
-  coord_flip()
-```
 
 #FOR MOLLY
-#Option 2 - PLotly? Seems like our best shot.
+#Plotly
 https://plotly.com/r/animations/
 https://plotly.com/r/creating-and-updating-figures/
 
@@ -426,61 +406,9 @@ fig <- ggsave("interactive_plot.png")
 
 #Save as html gif
 ```{r}
-widget <- ggplotly(fig, tooltip="text")
-widget
-
-saveWidget(widget, file=paste0("C:/Users/britt/OneDrive/Documents/Coursework/SURV 727/final project plot.html"))
+htmlwidgets::saveWidget(as_widget(fig), "index.html")
 ```
 
-```{r}
-byregion[is.na(byregion)] <- -1
-
-forplot <- byregion
-
-forplot <- forplot %>% 
-     mutate(date = recode(date, '2024-10-23 2024-10-24' = as.Date('2024-10-23'), '2024-10-25 2024-10-26' = as.Date('2024-10-25'), '2024-10-27 2024-10-28' = as.Date('2024-10-27'), '2024-10-29 2024-10-30' = as.Date('2024-10-29'), '2024-10-31 2024-11-01' = as.Date('2024-10-31'), '2024-11-02 2024-11-03' = as.Date('2024-11-02'), '2024-11-04 2024-11-05' = as.Date('2024-11-04'), '2024-11-06 2024-11-07' = as.Date('2024-11-06'), '2024-11-08 2024-11-09' = as.Date('2024-11-08'), '2024-11-10 2024-11-11' = as.Date('2024-11-10'), '2024-11-12 2024-11-13' = as.Date('2024-11-12'), '2024-11-14 2024-11-15' = as.Date('2024-11-14'), '2024-11-16 2024-11-17' = as.Date('2024-11-16'), '2024-11-18 2024-11-19' = as.Date('2024-11-18')))
-  
-
-```
-```{r}
-library(plotly)
-fig <- plot_ly(forplot, x = ~hits, y = ~location, size = ~hits, color = ~keyword, frame= ~date, type = 'scatter', mode = "markers", fill = ~'')
-
-fig <- fig %>% layout(
-    title = "Search Results by Top 5 Keywords",
-    yaxis = list(title = "State"),
-  legend=list(title=list(text='Keyword')),
-  xaxis = list(
-    title = "Hits",
-    tickmode = "array"
-  ),
-    margin = list(l = 100)
-  )
-
-fig <- fig %>% animation_slider(
-    currentvalue = list(prefix = "Date: ", font = list(color="black"))
-  )
-
-fig <- fig %>%
-  animation_opts( #higher value makes animation slower
-    2000, easing = "cubic-in", redraw = FALSE 
-  )
-fig
-```
-
-
-#Save plot as .png - can also save using plotly taskbar in plot
-```{r}
-fig <- ggsave("interactive_plot.png")
-```
-
-#Save as html gif
-```{r}
-widget <- ggplotly(fig, tooltip="text")
-widget
-
-saveWidget(widget, file=paste0("C:/Users/britt/OneDrive/Documents/Coursework/SURV 727/final project plot.html"))
-```
 
 # same as above but for metro area
 
@@ -528,58 +456,5 @@ fig2 <- ggsave("interactive_plot2.png")
 
 #Save as html gif
 ```{r}
-widget2 <- ggplotly(fig2, tooltip="text")
-widget2
-
-saveWidget(widget2, file=paste0("C:/Users/britt/OneDrive/Documents/Coursework/SURV 727/final project plot.html"))
-```
-
-```{r}
-byregion[is.na(byregion)] <- -1
-
-forplot <- byregion
-
-forplot <- forplot %>% 
-     mutate(date = recode(date, '2024-10-23 2024-10-24' = as.Date('2024-10-23'), '2024-10-25 2024-10-26' = as.Date('2024-10-25'), '2024-10-27 2024-10-28' = as.Date('2024-10-27'), '2024-10-29 2024-10-30' = as.Date('2024-10-29'), '2024-10-31 2024-11-01' = as.Date('2024-10-31'), '2024-11-02 2024-11-03' = as.Date('2024-11-02'), '2024-11-04 2024-11-05' = as.Date('2024-11-04'), '2024-11-06 2024-11-07' = as.Date('2024-11-06'), '2024-11-08 2024-11-09' = as.Date('2024-11-08'), '2024-11-10 2024-11-11' = as.Date('2024-11-10'), '2024-11-12 2024-11-13' = as.Date('2024-11-12'), '2024-11-14 2024-11-15' = as.Date('2024-11-14'), '2024-11-16 2024-11-17' = as.Date('2024-11-16'), '2024-11-18 2024-11-19' = as.Date('2024-11-18')))
-  
-
-```
-```{r}
-library(plotly)
-fig <- plot_ly(forplot, x = ~hits, y = ~location, size = ~hits, color = ~keyword, frame= ~date, type = 'scatter', mode = "markers", fill = ~'')
-
-fig <- fig %>% layout(
-    title = "Search Results by Top 5 Keywords",
-    yaxis = list(title = "State"),
-  legend=list(title=list(text='Keyword')),
-  xaxis = list(
-    title = "Hits",
-    tickmode = "array"
-  ),
-    margin = list(l = 100)
-  )
-
-fig <- fig %>% animation_slider(
-    currentvalue = list(prefix = "Date: ", font = list(color="black"))
-  )
-
-fig <- fig %>%
-  animation_opts( #higher value makes animation slower
-    2000, easing = "cubic-in", redraw = FALSE 
-  )
-fig
-```
-
-
-#Save plot as .png - can also save using plotly taskbar in plot
-```{r}
-fig <- ggsave("interactive_plot.png")
-```
-
-#Save as html gif
-```{r}
-widget <- ggplotly(fig, tooltip="text")
-widget
-
-saveWidget(widget, file=paste0("C:/Users/britt/OneDrive/Documents/Coursework/SURV 727/final project plot.html"))
+htmlwidgets::saveWidget(as_widget(fig2), "index.html")
 ```
