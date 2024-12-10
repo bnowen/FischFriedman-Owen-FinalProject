@@ -7,11 +7,8 @@ output: html_document
 
 Link to GitHub repository: https://github.com/bnowen/FischFriedman-Owen-FinalProject
 
-#Final Post
+#Proposal
 We explore how Google search volume related to abortion, birth control, and reproductive healthcare changed before and after the 2024 presidential election in the US by state and metropolitan area. We use the gtrendsR package to extract search history data for related terms through the Google Trends API. Our unit of analysis is search result density and any changes across our tracked time periods. We track search results by metro area (N=210) and state (N=51) for an additional, larger-scale perspective, as several states had abortion measures on the ballot for this election. Analysis was conducted on the Top 5 terms with the largest relative search volume after considering roughly 20 integer variables. Our initial, exploratory analysis was conducted using plots from base R and the ggplot2 package. From there, we utilized ggplot2 and plotly to create two interactive bubble plot charts that allow users to compare a search term (the color of a bubble) by its search volume (size of the bubble and x-axis) for each region or state (y-axis) over time in two-day increments (secondary x-axis). Users are able to hover over each bubble for more information on the exact search volume, location, and date. 
-
-Figures can be downloaded and viewed as local .html files from this repository:
-https://github.com/bnowen/FischFriedman-Owen-SURV727-Figures
 
 Note: If not all states or metropolitan areas are visible on the y-axis due to image resolution, please zoom in so that the figure can populate the entire space. To view static data for one date, click on the desired date in the slider and the figure will remain still.
 
@@ -362,18 +359,9 @@ library(extrafont)
 library(htmlwidgets)
 ```
 
-#FOR MOLLY
 #Plotly
 https://plotly.com/r/animations/
 https://plotly.com/r/creating-and-updating-figures/
-
-NOTES:
-
-- But it seems to have a problem with "bisalp". From what I've read online, this seems to be because "bisalp" isn't present on all search dates (earlier before the election). --> FIXED: set na to -1
-
-- Date variable needs to be set to DATETIME format or Plotly cannot format it correctly --> fixed
-
-- can we figure out a way to make the plot longer so that every state is written on the y axis?
 
 ```{r}
 byregion[is.na(byregion)] <- -1
