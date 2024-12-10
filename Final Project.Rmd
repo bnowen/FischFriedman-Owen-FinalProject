@@ -78,16 +78,19 @@ saveRDS(searches3_metro, "searches3_metro.rds")
 
 ``` {r}
 searches1_time$hits <- as.numeric(searches1_time$hits)
-plot1 <- ggplot(searches1_time, aes(x=date, y=hits, group=keyword)) + geom_line(aes(color=keyword))
+plot1 <- ggplot(searches1_time, aes(x=date, y=hits, group=keyword)) + geom_line(aes(color=keyword)) +
+  theme(text=element_text(size=18))
 ggsave("plot1.png", width = 16, height = 9, dpi = 100)
 
 searches2_time$hits <- as.numeric(searches2_time$hits)
-plot2 <- ggplot(searches2_time, aes(x=date, y=hits, group=keyword)) + geom_line(aes(color=keyword))
+plot2 <- ggplot(searches2_time, aes(x=date, y=hits, group=keyword)) + geom_line(aes(color=keyword)) +
+  theme(text=element_text(size=18))
 ggsave("plot2.png", width = 16, height = 9, dpi = 100)
 
 
 searches3_time$hits <- as.numeric(searches3_time$hits)
-plot3 <- ggplot(searches3_time, aes(x=date, y=hits, group=keyword)) + geom_line(aes(color=keyword))
+plot3 <- ggplot(searches3_time, aes(x=date, y=hits, group=keyword)) + geom_line(aes(color=keyword)) +
+  theme(text=element_text(size=18))
 ggsave("plot3.png", width = 16, height = 9, dpi = 100)
 
 ```
